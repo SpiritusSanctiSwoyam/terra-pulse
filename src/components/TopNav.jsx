@@ -4,24 +4,28 @@ import { ShieldAlert, Menu } from 'lucide-react';
 import useWindowSize from '../hooks/useWindowSize';
 
 export default function TopNav() {
-  const location = useLocation();
   const { isMobile, isTablet } = useWindowSize();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const isSmallScreen = isMobile || isTablet;
+  const isHome = location.pathname === '/';
 
   return (
     <div style={{
+      position: isHome ? 'absolute' : 'relative',
+      top: 0,
+      left: 0,
       width: '100%',
       height: isMobile ? '60px' : '70px',
-      backgroundColor: '#111827',
+      backgroundColor: isHome ? 'transparent' : '#111827',
       color: '#FFFFFF',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: isMobile ? '0 16px' : '0 32px',
-      borderBottom: '4px solid var(--accent-orange)',
+      borderBottom: isHome ? 'none' : '4px solid var(--accent-orange)',
       zIndex: 1500,
-      position: 'relative',
+      boxSizing: 'border-box',
       flexShrink: 0
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '8px' : '16px' }}>
@@ -29,6 +33,17 @@ export default function TopNav() {
         <span style={{ fontSize: isMobile ? '1rem' : '1.4rem', fontWeight: 800, letterSpacing: '1px' }}>
           {isMobile ? 'PS-08' : 'PS-08 DISASTER INTELLIGENCE'}
         </span>
+        <div style={{ 
+          width: '8px', height: '8px', backgroundColor: '#EF4444', borderRadius: '50%', 
+          animation: 'pulse 1.5s infinite', marginLeft: isMobile ? '4px' : '12px' 
+        }} title="System Online & Processing" />
+        <style>{`
+          @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+          }
+        `}</style>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '16px' : '32px' }}>

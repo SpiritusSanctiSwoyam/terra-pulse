@@ -11,7 +11,9 @@ function BottomBar({ zones }) {
   return (
     <div style={{
       width: '100%',
-      backgroundColor: 'var(--accent-orange)',
+      backgroundColor: 'rgba(249, 115, 22, 0.90)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       color: '#111827',
       padding: isMobile ? '8px 16px' : '12px 24px',
       display: 'flex',
@@ -38,15 +40,36 @@ function BottomBar({ zones }) {
 }
 
 export default function Dashboard() {
-  const [zones, setZones] = useState([]);
+  const [zones, setZones] = useState((data.cells || []).map(cell => ({
+    ...cell,
+    // Derived estimate from population_density (raw headcount field not present in ML schema)
+    affected_estimate: Math.round(cell.population_density * 3000)
+  })));
   const [eventBounds, setEventBounds] = useState(null);
   const [activeZone, setActiveZone] = useState(null);
   const { isMobile } = useWindowSize();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
-    setZones(data.zones);
-    setEventBounds(data.event.bounds);
+    const rawCells = data.cells || [];
+    const mappedZones = rawCells.map(cell => ({
+      ...cell,
+      affected_estimate: Math.round(cell.population_density * 3000)
+    }));
+    setZones(mappedZones);
+
+    if (data.event && data.event.bounds) {
+      setEventBounds(data.event.bounds);
+    } else if (rawCells.length > 0) {
+      const lats = rawCells.map(z => z.lat);
+      const lons = rawCells.map(z => z.lon);
+      setEventBounds({
+        north: Math.max(...lats) + 0.05,
+        south: Math.min(...lats) - 0.05,
+        east: Math.max(...lons) + 0.05,
+        west: Math.min(...lons) - 0.05
+      });
+    }
   }, []);
 
   return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Droplet, Layers, Download, BarChart, FileText, Code, X, AlertCircle } from 'lucide-react';
 import MapView from './MapView';
 import useWindowSize from '../hooks/useWindowSize';
+import RecommendationCard from './RecommendationCard';
 
 export default function ActivationDetails({ zone, onClose }) {
   const [activeTab, setActiveTab] = useState('description');
@@ -66,20 +67,23 @@ export default function ActivationDetails({ zone, onClose }) {
               </div>
             </div>
             
+            <RecommendationCard zone={zone} />
+
             <div style={{ marginBottom: '24px', fontSize: '0.9rem', color: '#6B7280' }}>
               <div style={{ marginBottom: '8px' }}><strong>Event Time:</strong> 2026-08-22 14:00 UTC</div>
               <div style={{ marginBottom: '8px' }}><strong>Detection Time:</strong> 2026-08-22 15:30 UTC</div>
-              <div style={{ marginBottom: '8px' }}><strong>Event Type:</strong> Flood</div>
-              <div style={{ marginBottom: '8px' }}><strong>Affected Region:</strong> Coordinates ({zone.lat}, {zone.lon})</div>
+              <div style={{ marginBottom: '8px' }}><strong>NDWI Delta:</strong> {zone.delta_ndwi}</div>
+              <div style={{ marginBottom: '8px' }}><strong>Pop Density:</strong> {zone.population_density} ({zone.lat}, {zone.lon})</div>
             </div>
 
             <div style={{ 
               backgroundColor: '#F9FAFB', padding: '16px', borderRadius: '8px', 
               border: '1px solid #E5E7EB', marginBottom: '24px', fontSize: '0.95rem', lineHeight: '1.5', color: '#374151' 
             }}>
-              On 2026-08-22, satellite change-detection analysis identified flooding in {zone.cell_id}. 
-              NDWI delta analysis confirmed {zone.severity.toUpperCase()} severity flooding affecting an estimated {zone.affected_estimate.toLocaleString()} people. 
-              Rapid response prioritization was triggered given the zone's priority score of {zone.priority_score}.
+              <div style={{ marginBottom: '16px', lineHeight: 1.5 }}>
+                Anomalous surface water detected via Sentinel-1 SAR imagery. Change detection algorithms indicate a maximum NDWI deviation of {zone.delta_ndwi} from the pre-event baseline. 
+                Rapid response prioritization was triggered given the zone's priority score of {(zone.priority_score * 100).toFixed(1)}.
+              </div>
             </div>
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
@@ -131,9 +135,9 @@ export default function ActivationDetails({ zone, onClose }) {
                 <div style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 700, marginBottom: '8px' }}>ESTIMATED POPULATION AFFECTED</div>
                 <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>{zone.affected_estimate.toLocaleString()}</div>
               </div>
-              <div style={{ backgroundColor: '#F9FAFB', border: '1px solid #E5E7EB', padding: '16px', borderRadius: '8px' }}>
-                <div style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 700, marginBottom: '8px' }}>PRIORITY SCORE</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>{zone.priority_score}</div>
+              <div style={{ flex: 1, backgroundColor: '#F9FAFB', padding: '16px', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
+                <div style={{ fontSize: '0.8rem', color: '#6B7280', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 700 }}>Priority Score</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>{(zone.priority_score * 100).toFixed(1)}</div>
               </div>
               <div style={{ backgroundColor: '#F9FAFB', border: '1px solid #E5E7EB', padding: '16px', borderRadius: '8px' }}>
                 <div style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 700, marginBottom: '8px' }}>SEVERITY LEVEL</div>
@@ -174,13 +178,16 @@ export default function ActivationDetails({ zone, onClose }) {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2000,
-      backgroundColor: '#FFFFFF', display: 'flex', flexDirection: isMobile ? 'column' : 'row', color: '#111827', fontFamily: 'sans-serif'
+      backgroundColor: 'rgba(255, 255, 255, 0.90)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      display: 'flex', flexDirection: isMobile ? 'column' : 'row', color: '#111827', fontFamily: 'sans-serif'
     }}>
       {/* Tab Navigation */}
       <div style={{
         width: isMobile ? '100%' : '280px', 
         height: isMobile ? 'auto' : '100%',
-        backgroundColor: '#F9FAFB', 
+        backgroundColor: 'rgba(249, 250, 251, 0.6)', 
         borderRight: isMobile ? 'none' : '1px solid #E5E7EB',
         borderBottom: isMobile ? '1px solid #E5E7EB' : 'none',
         display: 'flex', 

@@ -29,7 +29,23 @@ export default function Sidebar({ zones, onSelectZone, isMobileDrawer = false })
   };
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+    <div style={{ 
+      height: '100%', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      backgroundColor: 'rgba(255, 255, 255, 0.90)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)'
+    }}>
+      <style>{`
+        .sidebar-card {
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sidebar-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
       {!isMobileDrawer && (
         <div style={{ padding: '24px', borderBottom: '1px solid #E5E7EB', flexShrink: 0 }}>
           <h1 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 4px 0', color: '#111827' }}>PS-08 Disaster Intelligence</h1>
@@ -99,9 +115,9 @@ export default function Sidebar({ zones, onSelectZone, isMobileDrawer = false })
                   <div style={{ fontSize: '0.6rem', color: 'var(--text-muted-light)', fontWeight: 600, letterSpacing: '0.05em' }}>POP DENSITY</div>
                   <div style={{ fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{zone.population_density}</div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.6rem', color: 'var(--text-muted-light)', fontWeight: 600, letterSpacing: '0.05em' }}>SCORE</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{zone.priority_score}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{(zone.priority_score * 100).toFixed(1)}</div>
+                  <div style={{ fontSize: '0.7rem', color: '#9CA3AF' }}>PRIORITY</div>
                 </div>
               </div>
               
