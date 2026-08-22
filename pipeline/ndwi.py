@@ -164,6 +164,55 @@ def process(before_path: str, after_path: str, output_dir: str):
     print(f"  Total pixels:      {total_pixels:,}")
     print(f"  Flood pixels:      {flood_pixels:,} (delta > 0.1)")
     print(f"  Flood coverage:    {flood_pct:.2f}%")
+    
+    # --- Step 6: Aggregate into 5x5 grid ---
+    print(f"\n[6/6] Aggregating into 5x5 grid for severity processing...")
+    import json
+    h, w = delta_ndwi.shape
+    grid_h = h // 5
+    grid_w = w // 5
+    
+    grid = []
+    
+    # Extract bounds from profile
+    transform = profile['transform']
+    lon_min = transform.c
+    lat_max = transform.f
+    lon_max = lon_min + w * transform.a
+    lat_min = lat_max + h * transform.e
+    
+    for r in range(5):
+        for c in range(5):
+            # Extract cell patch
+            r_start, r_end = r * grid_h, (r+1) * grid_h if r < 4 else h
+            c_start, c_end = c * grid_w, (c+1) * grid_w if c < 4 else w
+            
+            patch = delta_ndwi[r_start:r_end, c_start:c_end]
+            avg_delta = float(np.mean(patch))
+            
+            # Calculate approx center lat/lon for cell in native CRS
+            cell_x = lon_min + (c + 0.5) * grid_w * transform.a
+            cell_y = lat_max + (r + 0.5) * grid_h * transform.e
+            
+            import rasterio.warp
+            # Convert native CRS back to lat/lon (EPSG:4326)
+            lon_array, lat_array = rasterio.warp.transform(
+                profile['crs'], 'EPSG:4326', [cell_x], [cell_y]
+            )
+            cell_lon = lon_array[0]
+            cell_lat = lat_array[0]
+            
+            grid.append({
+                "cell_id": f"r{r}_c{c}",
+                "lat": round(cell_lat, 4),
+                "lon": round(cell_lon, 4),
+                "delta_ndwi": round(avg_delta, 4)
+            })
+            
+    with open(os.path.join(output_dir, "ndwi_grid.json"), "w") as f:
+        json.dump(grid, f, indent=2)
+        
+    print(f"  ✓ Saved 5x5 aggregated grid to: {os.path.join(output_dir, 'ndwi_grid.json')}")
     print(f"  Output directory:  {output_dir}")
     print(f"{'='*60}\n")
 

@@ -14,10 +14,10 @@ def calculate_priority():
 
     # Load static demo data
     try:
-        with open('static/demo_grid.json', 'r') as f:
+        with open('pipeline/static/demo_grid.json', 'r') as f:
             static_data = json.load(f)
     except FileNotFoundError:
-        print("Error: static/demo_grid.json not found.")
+        print("Error: pipeline/static/demo_grid.json not found.")
         return
 
     # Convert static data to dictionary for fast lookup by cell_id

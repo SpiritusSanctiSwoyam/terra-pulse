@@ -3,6 +3,7 @@ import MapView from '../components/MapView';
 import Sidebar from '../components/Sidebar';
 import ActivationDetails from '../components/ActivationDetails';
 import data from '../data/dummyZones.json';
+import mlData from '../data/severity_grid.json';
 import { Layers } from 'lucide-react';
 import useWindowSize from '../hooks/useWindowSize';
 
@@ -40,29 +41,24 @@ function BottomBar({ zones }) {
 }
 
 export default function Dashboard() {
-  const [zones, setZones] = useState((data.cells || []).map(cell => ({
-    ...cell,
-    // Derived estimate from population_density (raw headcount field not present in ML schema)
-    affected_estimate: Math.round(cell.population_density * 3000)
-  })));
+  const [zones, setZones] = useState([]);
   const [eventBounds, setEventBounds] = useState(null);
   const [activeZone, setActiveZone] = useState(null);
   const { isMobile } = useWindowSize();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
-    const rawCells = data.cells || [];
+    // Load the pre-computed real ML data directly for the deployed app
+    const rawCells = mlData.cells || [];
     const mappedZones = rawCells.map(cell => ({
       ...cell,
       affected_estimate: Math.round(cell.population_density * 3000)
     }));
     setZones(mappedZones);
 
-    if (data.event && data.event.bounds) {
-      setEventBounds(data.event.bounds);
-    } else if (rawCells.length > 0) {
-      const lats = rawCells.map(z => z.lat);
-      const lons = rawCells.map(z => z.lon);
+    if (mappedZones.length > 0) {
+      const lats = mappedZones.map(z => z.lat);
+      const lons = mappedZones.map(z => z.lon);
       setEventBounds({
         north: Math.max(...lats) + 0.05,
         south: Math.min(...lats) - 0.05,

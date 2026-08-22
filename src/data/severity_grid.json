@@ -1,0 +1,254 @@
+{
+  "cells": [
+    {
+      "cell_id": "r0_c0",
+      "lat": 26.24,
+      "lon": 91.7091,
+      "severity": "low",
+      "delta_ndwi": -0.0415,
+      "population_density": 0.84,
+      "critical_infra_flag": 0,
+      "priority_score": 0.424
+    },
+    {
+      "cell_id": "r0_c1",
+      "lat": 26.2402,
+      "lon": 91.7292,
+      "severity": "low",
+      "delta_ndwi": -0.0928,
+      "population_density": 0.92,
+      "critical_infra_flag": 1,
+      "priority_score": 0.602
+    },
+    {
+      "cell_id": "r0_c2",
+      "lat": 26.2404,
+      "lon": 91.7493,
+      "severity": "low",
+      "delta_ndwi": -0.0425,
+      "population_density": 0.45,
+      "critical_infra_flag": 0,
+      "priority_score": 0.288
+    },
+    {
+      "cell_id": "r0_c3",
+      "lat": 26.2405,
+      "lon": 91.7694,
+      "severity": "low",
+      "delta_ndwi": 0.0445,
+      "population_density": 0.67,
+      "critical_infra_flag": 0,
+      "priority_score": 0.364
+    },
+    {
+      "cell_id": "r0_c4",
+      "lat": 26.2407,
+      "lon": 91.7895,
+      "severity": "medium",
+      "delta_ndwi": 0.0584,
+      "population_density": 0.12,
+      "critical_infra_flag": 0,
+      "priority_score": 0.332
+    },
+    {
+      "cell_id": "r1_c0",
+      "lat": 26.2199,
+      "lon": 91.7093,
+      "severity": "low",
+      "delta_ndwi": -0.0571,
+      "population_density": 0.78,
+      "critical_infra_flag": 1,
+      "priority_score": 0.553
+    },
+    {
+      "cell_id": "r1_c1",
+      "lat": 26.2201,
+      "lon": 91.7294,
+      "severity": "low",
+      "delta_ndwi": -0.0815,
+      "population_density": 0.88,
+      "critical_infra_flag": 1,
+      "priority_score": 0.588
+    },
+    {
+      "cell_id": "r1_c2",
+      "lat": 26.2202,
+      "lon": 91.7495,
+      "severity": "medium",
+      "delta_ndwi": 0.1112,
+      "population_density": 0.55,
+      "critical_infra_flag": 0,
+      "priority_score": 0.482
+    },
+    {
+      "cell_id": "r1_c3",
+      "lat": 26.2204,
+      "lon": 91.7696,
+      "severity": "medium",
+      "delta_ndwi": 0.1148,
+      "population_density": 0.34,
+      "critical_infra_flag": 0,
+      "priority_score": 0.409
+    },
+    {
+      "cell_id": "r1_c4",
+      "lat": 26.2206,
+      "lon": 91.7898,
+      "severity": "low",
+      "delta_ndwi": 0.02,
+      "population_density": 0.05,
+      "critical_infra_flag": 0,
+      "priority_score": 0.148
+    },
+    {
+      "cell_id": "r2_c0",
+      "lat": 26.1998,
+      "lon": 91.7095,
+      "severity": "low",
+      "delta_ndwi": -0.0775,
+      "population_density": 0.95,
+      "critical_infra_flag": 1,
+      "priority_score": 0.613
+    },
+    {
+      "cell_id": "r2_c1",
+      "lat": 26.1999,
+      "lon": 91.7296,
+      "severity": "low",
+      "delta_ndwi": -0.0422,
+      "population_density": 0.9,
+      "critical_infra_flag": 0,
+      "priority_score": 0.445
+    },
+    {
+      "cell_id": "r2_c2",
+      "lat": 26.2001,
+      "lon": 91.7497,
+      "severity": "low",
+      "delta_ndwi": -0.0172,
+      "population_density": 0.6,
+      "critical_infra_flag": 1,
+      "priority_score": 0.49
+    },
+    {
+      "cell_id": "r2_c3",
+      "lat": 26.2003,
+      "lon": 91.7698,
+      "severity": "low",
+      "delta_ndwi": -0.0526,
+      "population_density": 0.4,
+      "critical_infra_flag": 0,
+      "priority_score": 0.27
+    },
+    {
+      "cell_id": "r2_c4",
+      "lat": 26.2005,
+      "lon": 91.79,
+      "severity": "low",
+      "delta_ndwi": -0.0563,
+      "population_density": 0.1,
+      "critical_infra_flag": 0,
+      "priority_score": 0.165
+    },
+    {
+      "cell_id": "r3_c0",
+      "lat": 26.1796,
+      "lon": 91.7097,
+      "severity": "low",
+      "delta_ndwi": -0.048,
+      "population_density": 0.82,
+      "critical_infra_flag": 0,
+      "priority_score": 0.417
+    },
+    {
+      "cell_id": "r3_c1",
+      "lat": 26.1798,
+      "lon": 91.7298,
+      "severity": "low",
+      "delta_ndwi": 0.0063,
+      "population_density": 0.76,
+      "critical_infra_flag": 0,
+      "priority_score": 0.396
+    },
+    {
+      "cell_id": "r3_c2",
+      "lat": 26.18,
+      "lon": 91.7499,
+      "severity": "low",
+      "delta_ndwi": -0.0186,
+      "population_density": 0.5,
+      "critical_infra_flag": 0,
+      "priority_score": 0.305
+    },
+    {
+      "cell_id": "r3_c3",
+      "lat": 26.1802,
+      "lon": 91.7701,
+      "severity": "low",
+      "delta_ndwi": -0.0326,
+      "population_density": 0.25,
+      "critical_infra_flag": 0,
+      "priority_score": 0.218
+    },
+    {
+      "cell_id": "r3_c4",
+      "lat": 26.1803,
+      "lon": 91.7902,
+      "severity": "low",
+      "delta_ndwi": -0.0562,
+      "population_density": 0.08,
+      "critical_infra_flag": 0,
+      "priority_score": 0.158
+    },
+    {
+      "cell_id": "r4_c0",
+      "lat": 26.1595,
+      "lon": 91.7099,
+      "severity": "medium",
+      "delta_ndwi": 0.0624,
+      "population_density": 0.65,
+      "critical_infra_flag": 0,
+      "priority_score": 0.517
+    },
+    {
+      "cell_id": "r4_c1",
+      "lat": 26.1597,
+      "lon": 91.7301,
+      "severity": "low",
+      "delta_ndwi": 0.0191,
+      "population_density": 0.55,
+      "critical_infra_flag": 0,
+      "priority_score": 0.323
+    },
+    {
+      "cell_id": "r4_c2",
+      "lat": 26.1598,
+      "lon": 91.7502,
+      "severity": "low",
+      "delta_ndwi": -0.0329,
+      "population_density": 0.3,
+      "critical_infra_flag": 0,
+      "priority_score": 0.235
+    },
+    {
+      "cell_id": "r4_c3",
+      "lat": 26.16,
+      "lon": 91.7703,
+      "severity": "low",
+      "delta_ndwi": 0.0106,
+      "population_density": 0.15,
+      "critical_infra_flag": 0,
+      "priority_score": 0.182
+    },
+    {
+      "cell_id": "r4_c4",
+      "lat": 26.1602,
+      "lon": 91.7904,
+      "severity": "medium",
+      "delta_ndwi": 0.0722,
+      "population_density": 0.02,
+      "critical_infra_flag": 0,
+      "priority_score": 0.297
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "cell_id": "r0_c0",
+    "lat": 26.24,
+    "lon": 91.7091,
+    "delta_ndwi": -0.0415
+  },
+  {
+    "cell_id": "r0_c1",
+    "lat": 26.2402,
+    "lon": 91.7292,
+    "delta_ndwi": -0.0928
+  },
+  {
+    "cell_id": "r0_c2",
+    "lat": 26.2404,
+    "lon": 91.7493,
+    "delta_ndwi": -0.0425
+  },
+  {
+    "cell_id": "r0_c3",
+    "lat": 26.2405,
+    "lon": 91.7694,
+    "delta_ndwi": 0.0445
+  },
+  {
+    "cell_id": "r0_c4",
+    "lat": 26.2407,
+    "lon": 91.7895,
+    "delta_ndwi": 0.0584
+  },
+  {
+    "cell_id": "r1_c0",
+    "lat": 26.2199,
+    "lon": 91.7093,
+    "delta_ndwi": -0.0571
+  },
+  {
+    "cell_id": "r1_c1",
+    "lat": 26.2201,
+    "lon": 91.7294,
+    "delta_ndwi": -0.0815
+  },
+  {
+    "cell_id": "r1_c2",
+    "lat": 26.2202,
+    "lon": 91.7495,
+    "delta_ndwi": 0.1112
+  },
+  {
+    "cell_id": "r1_c3",
+    "lat": 26.2204,
+    "lon": 91.7696,
+    "delta_ndwi": 0.1148
+  },
+  {
+    "cell_id": "r1_c4",
+    "lat": 26.2206,
+    "lon": 91.7898,
+    "delta_ndwi": 0.02
+  },
+  {
+    "cell_id": "r2_c0",
+    "lat": 26.1998,
+    "lon": 91.7095,
+    "delta_ndwi": -0.0775
+  },
+  {
+    "cell_id": "r2_c1",
+    "lat": 26.1999,
+    "lon": 91.7296,
+    "delta_ndwi": -0.0422
+  },
+  {
+    "cell_id": "r2_c2",
+    "lat": 26.2001,
+    "lon": 91.7497,
+    "delta_ndwi": -0.0172
+  },
+  {
+    "cell_id": "r2_c3",
+    "lat": 26.2003,
+    "lon": 91.7698,
+    "delta_ndwi": -0.0526
+  },
+  {
+    "cell_id": "r2_c4",
+    "lat": 26.2005,
+    "lon": 91.79,
+    "delta_ndwi": -0.0563
+  },
+  {
+    "cell_id": "r3_c0",
+    "lat": 26.1796,
+    "lon": 91.7097,
+    "delta_ndwi": -0.048
+  },
+  {
+    "cell_id": "r3_c1",
+    "lat": 26.1798,
+    "lon": 91.7298,
+    "delta_ndwi": 0.0063
+  },
+  {
+    "cell_id": "r3_c2",
+    "lat": 26.18,
+    "lon": 91.7499,
+    "delta_ndwi": -0.0186
+  },
+  {
+    "cell_id": "r3_c3",
+    "lat": 26.1802,
+    "lon": 91.7701,
+    "delta_ndwi": -0.0326
+  },
+  {
+    "cell_id": "r3_c4",
+    "lat": 26.1803,
+    "lon": 91.7902,
+    "delta_ndwi": -0.0562
+  },
+  {
+    "cell_id": "r4_c0",
+    "lat": 26.1595,
+    "lon": 91.7099,
+    "delta_ndwi": 0.0624
+  },
+  {
+    "cell_id": "r4_c1",
+    "lat": 26.1597,
+    "lon": 91.7301,
+    "delta_ndwi": 0.0191
+  },
+  {
+    "cell_id": "r4_c2",
+    "lat": 26.1598,
+    "lon": 91.7502,
+    "delta_ndwi": -0.0329
+  },
+  {
+    "cell_id": "r4_c3",
+    "lat": 26.16,
+    "lon": 91.7703,
+    "delta_ndwi": 0.0106
+  },
+  {
+    "cell_id": "r4_c4",
+    "lat": 26.1602,
+    "lon": 91.7904,
+    "delta_ndwi": 0.0722
+  }
+]
