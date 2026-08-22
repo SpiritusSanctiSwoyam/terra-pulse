@@ -1,0 +1,289 @@
+{
+  "event": {
+    "name": "Flood Event - Demo Region",
+    "date": "2026-08-23",
+    "bounds": {
+      "north": 26.95,
+      "south": 26.85,
+      "east": 75.85,
+      "west": 75.75
+    }
+  },
+  "zones": [
+    {
+      "cell_id": "Z7",
+      "lat": 26.92,
+      "lon": 75.78,
+      "severity": "high",
+      "delta_value": 0.7558,
+      "population_density": 0.84,
+      "critical_infra": false,
+      "priority_score": 75.4,
+      "affected_estimate": 2330
+    },
+    {
+      "cell_id": "Z17",
+      "lat": 26.88,
+      "lon": 75.78,
+      "severity": "medium",
+      "delta_value": 0.0777,
+      "population_density": 0.71,
+      "critical_infra": true,
+      "priority_score": 71.9,
+      "affected_estimate": 780
+    },
+    {
+      "cell_id": "Z19",
+      "lat": 26.88,
+      "lon": 75.82,
+      "severity": "high",
+      "delta_value": 0.203,
+      "population_density": 0.73,
+      "critical_infra": false,
+      "priority_score": 71.5,
+      "affected_estimate": 1370
+    },
+    {
+      "cell_id": "Z14",
+      "lat": 26.9,
+      "lon": 75.82,
+      "severity": "high",
+      "delta_value": 0.1898,
+      "population_density": 0.7,
+      "critical_infra": false,
+      "priority_score": 70.5,
+      "affected_estimate": 2098
+    },
+    {
+      "cell_id": "Z25",
+      "lat": 26.86,
+      "lon": 75.84,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.87,
+      "critical_infra": true,
+      "priority_score": 63.4,
+      "affected_estimate": 587
+    },
+    {
+      "cell_id": "Z9",
+      "lat": 26.92,
+      "lon": 75.82,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.8,
+      "critical_infra": true,
+      "priority_score": 61.0,
+      "affected_estimate": 1520
+    },
+    {
+      "cell_id": "Z8",
+      "lat": 26.92,
+      "lon": 75.8,
+      "severity": "high",
+      "delta_value": 0.3002,
+      "population_density": 0.42,
+      "critical_infra": false,
+      "priority_score": 60.7,
+      "affected_estimate": 1335
+    },
+    {
+      "cell_id": "Z2",
+      "lat": 26.94,
+      "lon": 75.78,
+      "severity": "low",
+      "delta_value": 0.0477,
+      "population_density": 0.73,
+      "critical_infra": true,
+      "priority_score": 58.6,
+      "affected_estimate": 2501
+    },
+    {
+      "cell_id": "Z20",
+      "lat": 26.88,
+      "lon": 75.84,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.61,
+      "critical_infra": true,
+      "priority_score": 54.4,
+      "affected_estimate": 514
+    },
+    {
+      "cell_id": "Z24",
+      "lat": 26.86,
+      "lon": 75.82,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.49,
+      "critical_infra": true,
+      "priority_score": 50.1,
+      "affected_estimate": 845
+    },
+    {
+      "cell_id": "Z12",
+      "lat": 26.9,
+      "lon": 75.78,
+      "severity": "medium",
+      "delta_value": 0.0624,
+      "population_density": 0.43,
+      "critical_infra": false,
+      "priority_score": 47.1,
+      "affected_estimate": 459
+    },
+    {
+      "cell_id": "Z16",
+      "lat": 26.88,
+      "lon": 75.76,
+      "severity": "low",
+      "delta_value": 0.0021,
+      "population_density": 0.82,
+      "critical_infra": false,
+      "priority_score": 46.7,
+      "affected_estimate": 1119
+    },
+    {
+      "cell_id": "Z1",
+      "lat": 26.94,
+      "lon": 75.76,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.8,
+      "critical_infra": false,
+      "priority_score": 46.0,
+      "affected_estimate": 2460
+    },
+    {
+      "cell_id": "Z3",
+      "lat": 26.94,
+      "lon": 75.8,
+      "severity": "low",
+      "delta_value": 0.0035,
+      "population_density": 0.79,
+      "critical_infra": false,
+      "priority_score": 45.6,
+      "affected_estimate": 698
+    },
+    {
+      "cell_id": "Z22",
+      "lat": 26.86,
+      "lon": 75.78,
+      "severity": "low",
+      "delta_value": 0.0044,
+      "population_density": 0.79,
+      "critical_infra": false,
+      "priority_score": 45.6,
+      "affected_estimate": 1706
+    },
+    {
+      "cell_id": "Z11",
+      "lat": 26.9,
+      "lon": 75.76,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.77,
+      "critical_infra": false,
+      "priority_score": 45.0,
+      "affected_estimate": 1137
+    },
+    {
+      "cell_id": "Z15",
+      "lat": 26.9,
+      "lon": 75.84,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.73,
+      "critical_infra": false,
+      "priority_score": 43.5,
+      "affected_estimate": 2187
+    },
+    {
+      "cell_id": "Z21",
+      "lat": 26.86,
+      "lon": 75.76,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.7,
+      "critical_infra": false,
+      "priority_score": 42.5,
+      "affected_estimate": 1536
+    },
+    {
+      "cell_id": "Z5",
+      "lat": 26.94,
+      "lon": 75.84,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.68,
+      "critical_infra": false,
+      "priority_score": 41.8,
+      "affected_estimate": 1244
+    },
+    {
+      "cell_id": "Z23",
+      "lat": 26.86,
+      "lon": 75.8,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.6,
+      "critical_infra": false,
+      "priority_score": 39.0,
+      "affected_estimate": 355
+    },
+    {
+      "cell_id": "Z10",
+      "lat": 26.92,
+      "lon": 75.84,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.14,
+      "critical_infra": true,
+      "priority_score": 37.9,
+      "affected_estimate": 356
+    },
+    {
+      "cell_id": "Z4",
+      "lat": 26.94,
+      "lon": 75.82,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.51,
+      "critical_infra": false,
+      "priority_score": 35.9,
+      "affected_estimate": 1672
+    },
+    {
+      "cell_id": "Z6",
+      "lat": 26.92,
+      "lon": 75.76,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.3,
+      "critical_infra": false,
+      "priority_score": 28.5,
+      "affected_estimate": 207
+    },
+    {
+      "cell_id": "Z13",
+      "lat": 26.9,
+      "lon": 75.8,
+      "severity": "low",
+      "delta_value": 0.0074,
+      "population_density": 0.22,
+      "critical_infra": false,
+      "priority_score": 25.7,
+      "affected_estimate": 259
+    },
+    {
+      "cell_id": "Z18",
+      "lat": 26.88,
+      "lon": 75.8,
+      "severity": "low",
+      "delta_value": 0.0,
+      "population_density": 0.11,
+      "critical_infra": false,
+      "priority_score": 21.9,
+      "affected_estimate": 274
+    }
+  ]
+}
