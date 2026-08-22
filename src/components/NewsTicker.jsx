@@ -4,11 +4,13 @@ import useWindowSize from '../hooks/useWindowSize';
 
 export default function NewsTicker() {
   const { isMobile } = useWindowSize();
-  const activeZones = data.zones.filter(z => z.severity === 'high');
-  
-  const headlines = activeZones.map(zone => 
-    `BREAKING: Severe flooding detected in EMSR2026-${zone.cell_id}. Priority Score ${zone.priority_score}. Rapid response mapping ongoing...`
-  ).join('  |  ');
+  const highSeverityZones = data.cells ? data.cells.filter(z => z.severity === 'high') : [];
+
+  if (highSeverityZones.length === 0) return null;
+
+  const headlines = highSeverityZones.map(zone => 
+    `BREAKING: Severe flooding detected in EMSR2026-${zone.cell_id}. Priority Score ${(zone.priority_score * 100).toFixed(1)}. Rapid response mapping ongoing...`
+  ).join(' | \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 | \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 ');
 
   return (
     <div style={{

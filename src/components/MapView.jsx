@@ -153,8 +153,11 @@ export default function MapView({ zones, bounds, focusMode = false }) {
                   <div style={{ marginBottom: '4px', textTransform: 'uppercase', color: color, fontWeight: 700, fontSize: '0.8rem' }}>
                     Severity: {zone.severity}
                   </div>
+                  <div style={{ color: '#4B5563', fontSize: '0.9rem', marginBottom: '4px' }}>
+                    Affected: {zone.affected_estimate ? zone.affected_estimate.toLocaleString() : 'N/A'}
+                  </div>
                   <div style={{ color: '#4B5563', fontSize: '0.9rem' }}>
-                    Affected: {zone.affected_estimate.toLocaleString()}
+                    <strong>Priority:</strong> {(zone.priority_score * 100).toFixed(1)}
                   </div>
                 </div>
               </Popup>

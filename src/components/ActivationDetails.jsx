@@ -72,17 +72,18 @@ export default function ActivationDetails({ zone, onClose }) {
             <div style={{ marginBottom: '24px', fontSize: '0.9rem', color: '#6B7280' }}>
               <div style={{ marginBottom: '8px' }}><strong>Event Time:</strong> 2026-08-22 14:00 UTC</div>
               <div style={{ marginBottom: '8px' }}><strong>Detection Time:</strong> 2026-08-22 15:30 UTC</div>
-              <div style={{ marginBottom: '8px' }}><strong>Event Type:</strong> Flood</div>
-              <div style={{ marginBottom: '8px' }}><strong>Affected Region:</strong> Coordinates ({zone.lat}, {zone.lon})</div>
+              <div style={{ marginBottom: '8px' }}><strong>NDWI Delta:</strong> {zone.delta_ndwi}</div>
+              <div style={{ marginBottom: '8px' }}><strong>Pop Density:</strong> {zone.population_density} ({zone.lat}, {zone.lon})</div>
             </div>
 
             <div style={{ 
               backgroundColor: '#F9FAFB', padding: '16px', borderRadius: '8px', 
               border: '1px solid #E5E7EB', marginBottom: '24px', fontSize: '0.95rem', lineHeight: '1.5', color: '#374151' 
             }}>
-              On 2026-08-22, satellite change-detection analysis identified flooding in {zone.cell_id}. 
-              NDWI delta analysis confirmed {zone.severity.toUpperCase()} severity flooding affecting an estimated {zone.affected_estimate.toLocaleString()} people. 
-              Rapid response prioritization was triggered given the zone's priority score of {zone.priority_score}.
+              <div style={{ marginBottom: '16px', lineHeight: 1.5 }}>
+                Anomalous surface water detected via Sentinel-1 SAR imagery. Change detection algorithms indicate a maximum NDWI deviation of {zone.delta_ndwi} from the pre-event baseline. 
+                Rapid response prioritization was triggered given the zone's priority score of {(zone.priority_score * 100).toFixed(1)}.
+              </div>
             </div>
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
@@ -134,9 +135,9 @@ export default function ActivationDetails({ zone, onClose }) {
                 <div style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 700, marginBottom: '8px' }}>ESTIMATED POPULATION AFFECTED</div>
                 <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>{zone.affected_estimate.toLocaleString()}</div>
               </div>
-              <div style={{ backgroundColor: '#F9FAFB', border: '1px solid #E5E7EB', padding: '16px', borderRadius: '8px' }}>
-                <div style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 700, marginBottom: '8px' }}>PRIORITY SCORE</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>{zone.priority_score}</div>
+              <div style={{ flex: 1, backgroundColor: '#F9FAFB', padding: '16px', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
+                <div style={{ fontSize: '0.8rem', color: '#6B7280', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 700 }}>Priority Score</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>{(zone.priority_score * 100).toFixed(1)}</div>
               </div>
               <div style={{ backgroundColor: '#F9FAFB', border: '1px solid #E5E7EB', padding: '16px', borderRadius: '8px' }}>
                 <div style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 700, marginBottom: '8px' }}>SEVERITY LEVEL</div>

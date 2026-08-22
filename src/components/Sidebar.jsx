@@ -115,9 +115,9 @@ export default function Sidebar({ zones, onSelectZone, isMobileDrawer = false })
                   <div style={{ fontSize: '0.6rem', color: 'var(--text-muted-light)', fontWeight: 600, letterSpacing: '0.05em' }}>POP DENSITY</div>
                   <div style={{ fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{zone.population_density}</div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.6rem', color: 'var(--text-muted-light)', fontWeight: 600, letterSpacing: '0.05em' }}>SCORE</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{zone.priority_score}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 500, color: '#374151' }}>{(zone.priority_score * 100).toFixed(1)}</div>
+                  <div style={{ fontSize: '0.7rem', color: '#9CA3AF' }}>PRIORITY</div>
                 </div>
               </div>
               

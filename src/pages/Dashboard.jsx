@@ -40,7 +40,11 @@ function BottomBar({ zones }) {
 }
 
 export default function Dashboard() {
-  const [zones, setZones] = useState([]);
+  const [zones, setZones] = useState((data.cells || []).map(cell => ({
+    ...cell,
+    // Derived estimate from population_density (raw headcount field not present in ML schema)
+    affected_estimate: Math.round(cell.population_density * 3000)
+  })));
   const [eventBounds, setEventBounds] = useState(null);
   const [activeZone, setActiveZone] = useState(null);
   const { isMobile } = useWindowSize();
