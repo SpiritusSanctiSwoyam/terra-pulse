@@ -4,24 +4,28 @@ import { ShieldAlert, Menu } from 'lucide-react';
 import useWindowSize from '../hooks/useWindowSize';
 
 export default function TopNav() {
-  const location = useLocation();
   const { isMobile, isTablet } = useWindowSize();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const isSmallScreen = isMobile || isTablet;
+  const isHome = location.pathname === '/';
 
   return (
     <div style={{
+      position: isHome ? 'absolute' : 'relative',
+      top: 0,
+      left: 0,
       width: '100%',
       height: isMobile ? '60px' : '70px',
-      backgroundColor: '#111827',
+      backgroundColor: isHome ? 'transparent' : '#111827',
       color: '#FFFFFF',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: isMobile ? '0 16px' : '0 32px',
-      borderBottom: '4px solid var(--accent-orange)',
+      borderBottom: isHome ? 'none' : '4px solid var(--accent-orange)',
       zIndex: 1500,
-      position: 'relative',
+      boxSizing: 'border-box',
       flexShrink: 0
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '8px' : '16px' }}>
