@@ -40,14 +40,7 @@ function BoundsComponent({ bounds, focusMode, zones }) {
 
 export default function MapView({ zones, bounds, focusMode = false }) {
   const [basemap, setBasemap] = useState('satellite');
-  const [timelineValue, setTimelineValue] = useState(100);
   const { isMobile } = useWindowSize();
-
-  const getTimelineMonth = (value) => {
-    const months = ['Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026', 'Apr 2026', 'May 2026', 'Jun 2026', 'Jul 2026', 'Aug 2026'];
-    const index = Math.round((value / 100) * (months.length - 1));
-    return months[index];
-  };
 
   const getSeverityColor = (severity) => {
     switch(severity) {
@@ -139,7 +132,8 @@ export default function MapView({ zones, bounds, focusMode = false }) {
           />
         )}
         
-        {zones.slice(0, Math.max(1, Math.ceil((timelineValue / 100) * zones.length))).map(zone => {
+        {/* Render Zones */}
+        {zones.map(zone => {
           const color = getSeverityColor(zone.severity);
           return (
             <Marker
@@ -200,66 +194,6 @@ export default function MapView({ zones, bounds, focusMode = false }) {
           ))}
         </div>
       </div>
-      
-      {/* Timeline Control */}
-      {!focusMode && (
-        <div style={{
-          position: 'absolute',
-          bottom: isMobile ? '45%' : '24px',
-          right: isMobile ? '12px' : '24px',
-          zIndex: 1000,
-          backgroundColor: 'rgba(30, 41, 59, 0.85)',
-          backdropFilter: 'blur(8px)',
-          padding: isMobile ? '8px 16px' : '12px 24px',
-          borderRadius: '24px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: isMobile ? '8px' : '16px',
-          color: 'white',
-          border: '1px solid rgba(255,255,255,0.1)'
-        }}>
-          {!isMobile && <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>2025-Aug</div>}
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', width: isMobile ? '100px' : '150px' }}>
-            <div style={{
-              position: 'absolute',
-              top: '-32px',
-              left: `calc(${timelineValue}% - 36px)`,
-              backgroundColor: 'var(--accent-orange)',
-              color: '#111827',
-              padding: '4px 8px',
-              borderRadius: '6px',
-              fontSize: '0.75rem',
-              fontWeight: 800,
-              pointerEvents: 'none',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.3)',
-              transition: 'left 0.1s ease-out'
-            }}>
-              {getTimelineMonth(timelineValue)}
-              <div style={{
-                position: 'absolute',
-                bottom: '-4px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 0,
-                height: 0,
-                borderLeft: '4px solid transparent',
-                borderRight: '4px solid transparent',
-                borderTop: '4px solid var(--accent-orange)'
-              }} />
-            </div>
-            <input 
-              type="range" 
-              min="0" 
-              max="100" 
-              value={timelineValue}
-              onChange={(e) => setTimelineValue(Number(e.target.value))}
-              style={{ width: '100%', cursor: 'pointer', accentColor: 'var(--accent-orange)', margin: 0 }}
-            />
-          </div>
-          <div style={{ fontSize: isMobile ? '0.75rem' : '0.85rem', fontWeight: 600 }}>2026-Aug</div>
-        </div>
-      )}
       
     </div>
   );
