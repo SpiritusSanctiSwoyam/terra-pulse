@@ -39,7 +39,8 @@ function BoundsComponent({ bounds, focusMode, zones }) {
 }
 
 export default function MapView({ zones, bounds, focusMode = false }) {
-  const [basemap, setBasemap] = useState('satellite');
+  const [basemap, setBasemap] = useState('dark');
+  const [timelineValue, setTimelineValue] = useState(100);
   const { isMobile } = useWindowSize();
 
   const getSeverityColor = (severity) => {
@@ -82,32 +83,6 @@ export default function MapView({ zones, bounds, focusMode = false }) {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      {/* Basemap Toggle */}
-      <button
-        onClick={() => setBasemap(prev => prev === 'dark' ? 'satellite' : 'dark')}
-        style={{
-          position: 'absolute',
-          top: isMobile ? '70px' : '20px',
-          right: isMobile ? '12px' : '20px',
-          zIndex: 1000,
-          backgroundColor: '#FFFFFF',
-          color: '#111827',
-          border: 'none',
-          borderRadius: '50%',
-          width: '40px',
-          height: '40px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'background-color 0.2s'
-        }}
-        title="Toggle Basemap"
-      >
-        <Layers size={20} />
-      </button>
-
       <MapContainer 
         center={[26.9, 75.8]} 
         zoom={12} 
@@ -133,7 +108,7 @@ export default function MapView({ zones, bounds, focusMode = false }) {
         )}
         
         {/* Render Zones */}
-        {zones.map(zone => {
+        {timelineValue >= 50 && zones.map(zone => {
           const color = getSeverityColor(zone.severity);
           return (
             <Marker
@@ -194,6 +169,70 @@ export default function MapView({ zones, bounds, focusMode = false }) {
           ))}
         </div>
       </div>
+
+      {/* Pre/Post Scrubber */}
+      {!focusMode && (
+        <div style={{
+          position: 'absolute',
+          bottom: isMobile ? '45%' : '24px',
+          right: isMobile ? '12px' : '24px',
+          zIndex: 1000,
+          backgroundColor: 'rgba(30, 41, 59, 0.85)',
+          backdropFilter: 'blur(8px)',
+          padding: isMobile ? '8px 16px' : '12px 24px',
+          borderRadius: '24px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: isMobile ? '8px' : '16px',
+          color: 'white',
+          border: '1px solid rgba(255,255,255,0.1)'
+        }}>
+          {!isMobile && <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9CA3AF' }}>BEFORE</div>}
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', width: isMobile ? '120px' : '200px' }}>
+            <div style={{
+              position: 'absolute',
+              top: '-32px',
+              left: `calc(${timelineValue}% - 40px)`,
+              backgroundColor: 'var(--accent-orange)',
+              color: '#111827',
+              padding: '4px 8px',
+              borderRadius: '6px',
+              fontSize: '0.75rem',
+              fontWeight: 800,
+              pointerEvents: 'none',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.3)',
+              transition: 'left 0.1s ease-out'
+            }}>
+              {timelineValue < 50 ? 'Pre-Disaster' : 'Post-Disaster'}
+              <div style={{
+                position: 'absolute',
+                bottom: '-4px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 0,
+                height: 0,
+                borderLeft: '4px solid transparent',
+                borderRight: '4px solid transparent',
+                borderTop: '4px solid var(--accent-orange)'
+              }} />
+            </div>
+            <input 
+              type="range" 
+              min="0" 
+              max="100" 
+              value={timelineValue}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                setTimelineValue(val);
+                setBasemap(val < 50 ? 'satellite' : 'dark');
+              }}
+              style={{ width: '100%', cursor: 'pointer', accentColor: 'var(--accent-orange)', margin: 0 }}
+            />
+          </div>
+          <div style={{ fontSize: isMobile ? '0.75rem' : '0.85rem', fontWeight: 600 }}>AFTER</div>
+        </div>
+      )}
       
     </div>
   );
