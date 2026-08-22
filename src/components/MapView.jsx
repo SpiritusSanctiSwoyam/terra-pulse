@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Layers, Flame, Waves, AlertTriangle } from 'lucide-react';
@@ -132,31 +133,58 @@ export default function MapView({ zones, bounds, focusMode = false }) {
         )}
         
         {/* Render Zones */}
-        {timelineValue >= 50 && zones.map(zone => {
-          const color = getSeverityColor(zone.severity);
-          return (
-            <Marker
-              key={zone.cell_id}
-              position={[zone.lat, zone.lon]}
-              icon={createCopernicusIcon(zone)}
-            >
-              <Popup>
-                <div style={{ minWidth: '150px' }}>
-                  <h3 style={{ margin: '0 0 8px 0', fontSize: '1.1rem', color: '#111827' }}>EMSR2026 - {zone.cell_id}</h3>
-                  <div style={{ marginBottom: '4px', textTransform: 'uppercase', color: color, fontWeight: 700, fontSize: '0.8rem' }}>
-                    Severity: {zone.severity}
-                  </div>
-                  <div style={{ color: '#4B5563', fontSize: '0.9rem', marginBottom: '4px' }}>
-                    Affected: {zone.affected_estimate ? zone.affected_estimate.toLocaleString() : 'N/A'}
-                  </div>
-                  <div style={{ color: '#4B5563', fontSize: '0.9rem' }}>
-                    <strong>Priority:</strong> {(zone.priority_score * 100).toFixed(1)}
-                  </div>
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
+        {timelineValue >= 50 && (
+          <MarkerClusterGroup
+            chunkedLoading
+            iconCreateFunction={(cluster) => {
+              const count = cluster.getChildCount();
+              return L.divIcon({
+                html: `<div style="
+                  background: rgba(249, 115, 22, 0.9);
+                  color: white;
+                  border-radius: 50%;
+                  width: 44px;
+                  height: 44px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-weight: 800;
+                  font-size: 14px;
+                  border: 3px solid rgba(255,255,255,0.8);
+                  box-shadow: 0 4px 12px rgba(249,115,22,0.5);
+                ">${count}</div>`,
+                className: '',
+                iconSize: L.point(44, 44)
+              });
+            }}
+          >
+            {zones.map(zone => {
+              const color = getSeverityColor(zone.severity);
+              return (
+                <Marker
+                  key={zone.cell_id}
+                  position={[zone.lat, zone.lon]}
+                  icon={createCopernicusIcon(zone)}
+                >
+                  <Popup>
+                    <div style={{ minWidth: '150px' }}>
+                      <h3 style={{ margin: '0 0 8px 0', fontSize: '1.1rem', color: '#111827' }}>EMSR2026 - {zone.cell_id}</h3>
+                      <div style={{ marginBottom: '4px', textTransform: 'uppercase', color: color, fontWeight: 700, fontSize: '0.8rem' }}>
+                        Severity: {zone.severity}
+                      </div>
+                      <div style={{ color: '#4B5563', fontSize: '0.9rem', marginBottom: '4px' }}>
+                        Affected: {zone.affected_estimate ? zone.affected_estimate.toLocaleString() : 'N/A'}
+                      </div>
+                      <div style={{ color: '#4B5563', fontSize: '0.9rem' }}>
+                        <strong>Priority:</strong> {(zone.priority_score * 100).toFixed(1)}
+                      </div>
+                    </div>
+                  </Popup>
+                </Marker>
+              );
+            })}
+          </MarkerClusterGroup>
+        )}
       </MapContainer>
 
       {/* Legend */}
