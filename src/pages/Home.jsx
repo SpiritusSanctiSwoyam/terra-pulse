@@ -116,18 +116,21 @@ export default function Home() {
             title="Floods"
             description="With rising global temperatures and unpredictable weather patterns, coastal and river flooding incidents are escalating rapidly, displacing millions annually."
             image="https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=800&auto=format&fit=crop"
+            onClick={() => navigate('/dashboard')}
           />
           {/* Wildfire Card */}
           <FeatureCard 
             title="Wildfires"
             description="Drier seasons and prolonged heatwaves have transformed vast forests into tinderboxes. Rapid detection is the only viable defense line."
             image="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=800&auto=format&fit=crop"
+            onClick={() => navigate('/dashboard')}
           />
           {/* Earthquakes Card */}
           <FeatureCard 
             title="Earthquakes"
             description="Sudden seismic events shatter critical infrastructure without warning. Instantaneous structural damage mapping directs relief to the hardest-hit sectors."
             image="https://images.unsplash.com/photo-1595180410403-128c119e8c45?q=80&w=800&auto=format&fit=crop"
+            onClick={() => navigate('/dashboard')}
           />
         </div>
       </div>
@@ -136,7 +139,7 @@ export default function Home() {
 }
 
 // Helper Component for the 3 bottom cards
-function FeatureCard({ title, description, image }) {
+function FeatureCard({ title, description, image, onClick }) {
   return (
     <div style={{
       height: '300px',
@@ -165,16 +168,22 @@ function FeatureCard({ title, description, image }) {
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', margin: '0 0 16px 0', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
           {description}
         </p>
-        <button style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          border: 'none',
-          padding: '8px 16px',
-          borderRadius: '20px',
-          fontSize: '0.8rem',
-          fontWeight: 700,
-          cursor: 'pointer',
-          alignSelf: 'flex-start'
-        }}>
+        <button 
+          onClick={onClick}
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            border: 'none',
+            padding: '8px 16px',
+            borderRadius: '20px',
+            fontSize: '0.8rem',
+            fontWeight: 700,
+            cursor: 'pointer',
+            alignSelf: 'flex-start',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = '#FFFFFF'}
+          onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'}
+        >
           Learn More
         </button>
       </div>
