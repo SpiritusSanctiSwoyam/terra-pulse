@@ -83,6 +83,30 @@ export default function MapView({ zones, bounds, focusMode = false }) {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      {/* Basemap Toggle */}
+      <button
+        onClick={() => setBasemap(prev => prev === 'dark' ? 'satellite' : 'dark')}
+        style={{
+          position: 'absolute',
+          top: '24px',
+          left: isMobile ? '12px' : '24px',
+          zIndex: 1000,
+          backgroundColor: '#1E293B',
+          color: 'white',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: '8px',
+          padding: '8px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background-color 0.2s'
+        }}
+        title="Toggle Basemap"
+      >
+        <Layers size={20} />
+      </button>
+
       <MapContainer 
         center={[26.9, 75.8]} 
         zoom={12} 
@@ -223,9 +247,7 @@ export default function MapView({ zones, bounds, focusMode = false }) {
               max="100" 
               value={timelineValue}
               onChange={(e) => {
-                const val = Number(e.target.value);
-                setTimelineValue(val);
-                setBasemap(val < 50 ? 'satellite' : 'dark');
+                setTimelineValue(Number(e.target.value));
               }}
               style={{ width: '100%', cursor: 'pointer', accentColor: 'var(--accent-orange)', margin: 0 }}
             />
