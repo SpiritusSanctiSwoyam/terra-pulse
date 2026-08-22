@@ -5,4 +5,4 @@ A satellite-derived rapid damage assessment platform combining NDWI-based flood 
 
 ## Team
 - **Swoyam** — data/ML pipeline (ingestion, NDWI, severity, prioritization)
-- **Kunal** — dashboard (map, sidebar, UI)
+- **Kunal** — dashboard (map, sidebar, UI), Integration, bug fixing 
