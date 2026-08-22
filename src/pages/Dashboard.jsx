@@ -51,8 +51,25 @@ export default function Dashboard() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
-    setZones(data.zones);
-    setEventBounds(data.event.bounds);
+    const rawCells = data.cells || [];
+    const mappedZones = rawCells.map(cell => ({
+      ...cell,
+      affected_estimate: Math.round(cell.population_density * 3000)
+    }));
+    setZones(mappedZones);
+
+    if (data.event && data.event.bounds) {
+      setEventBounds(data.event.bounds);
+    } else if (rawCells.length > 0) {
+      const lats = rawCells.map(z => z.lat);
+      const lons = rawCells.map(z => z.lon);
+      setEventBounds({
+        north: Math.max(...lats) + 0.05,
+        south: Math.min(...lats) - 0.05,
+        east: Math.max(...lons) + 0.05,
+        west: Math.min(...lons) - 0.05
+      });
+    }
   }, []);
 
   return (
