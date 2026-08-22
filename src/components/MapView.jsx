@@ -39,7 +39,7 @@ function BoundsComponent({ bounds, focusMode, zones }) {
 }
 
 export default function MapView({ zones, bounds, focusMode = false }) {
-  const [basemap, setBasemap] = useState('dark');
+  const [basemap, setBasemap] = useState('satellite');
   const [timelineValue, setTimelineValue] = useState(100);
   const { isMobile } = useWindowSize();
 
