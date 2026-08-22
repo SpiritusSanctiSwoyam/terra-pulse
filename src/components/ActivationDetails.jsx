@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Droplet, Layers, Download, BarChart, FileText, Code, X, AlertCircle } from 'lucide-react';
 import MapView from './MapView';
 import useWindowSize from '../hooks/useWindowSize';
+import RecommendationCard from './RecommendationCard';
 
 export default function ActivationDetails({ zone, onClose }) {
   const [activeTab, setActiveTab] = useState('description');
@@ -66,6 +67,8 @@ export default function ActivationDetails({ zone, onClose }) {
               </div>
             </div>
             
+            <RecommendationCard zone={zone} />
+
             <div style={{ marginBottom: '24px', fontSize: '0.9rem', color: '#6B7280' }}>
               <div style={{ marginBottom: '8px' }}><strong>Event Time:</strong> 2026-08-22 14:00 UTC</div>
               <div style={{ marginBottom: '8px' }}><strong>Detection Time:</strong> 2026-08-22 15:30 UTC</div>
@@ -174,13 +177,16 @@ export default function ActivationDetails({ zone, onClose }) {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2000,
-      backgroundColor: '#FFFFFF', display: 'flex', flexDirection: isMobile ? 'column' : 'row', color: '#111827', fontFamily: 'sans-serif'
+      backgroundColor: 'rgba(255, 255, 255, 0.90)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      display: 'flex', flexDirection: isMobile ? 'column' : 'row', color: '#111827', fontFamily: 'sans-serif'
     }}>
       {/* Tab Navigation */}
       <div style={{
         width: isMobile ? '100%' : '280px', 
         height: isMobile ? 'auto' : '100%',
-        backgroundColor: '#F9FAFB', 
+        backgroundColor: 'rgba(249, 250, 251, 0.6)', 
         borderRight: isMobile ? 'none' : '1px solid #E5E7EB',
         borderBottom: isMobile ? '1px solid #E5E7EB' : 'none',
         display: 'flex', 

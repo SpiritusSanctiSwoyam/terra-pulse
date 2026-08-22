@@ -29,7 +29,23 @@ export default function Sidebar({ zones, onSelectZone, isMobileDrawer = false })
   };
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+    <div style={{ 
+      height: '100%', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      backgroundColor: 'rgba(255, 255, 255, 0.90)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)'
+    }}>
+      <style>{`
+        .sidebar-card {
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sidebar-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
       {!isMobileDrawer && (
         <div style={{ padding: '24px', borderBottom: '1px solid #E5E7EB', flexShrink: 0 }}>
           <h1 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 4px 0', color: '#111827' }}>PS-08 Disaster Intelligence</h1>

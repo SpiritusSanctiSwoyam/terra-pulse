@@ -11,7 +11,9 @@ function BottomBar({ zones }) {
   return (
     <div style={{
       width: '100%',
-      backgroundColor: 'var(--accent-orange)',
+      backgroundColor: 'rgba(249, 115, 22, 0.90)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       color: '#111827',
       padding: isMobile ? '8px 16px' : '12px 24px',
       display: 'flex',
